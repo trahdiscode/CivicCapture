@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CivicCapture - Government Portal</title>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,500;8..60,600&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@500&display=swap" rel="stylesheet" />
+  
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <div class="ledger">
+
+    <header class="ledger-head">
+      <p class="case-marker">Official Access</p>
+      <h1>Deletion Requests</h1>
+      <p class="ledger-rule">Review and authorize deletion of citizen records.</p>
+    </header>
+
+    <section class="entry">
+      <div class="entry-head">
+        <span class="entry-num">01</span>
+        <h2>Pending Requests</h2>
+      </div>
+      <div class="entry-body">
+        <button id="refresh-btn">Refresh List</button>
+        <p id="status-message" class="status-line"></p>
+        <ul id="request-list" class="ledger-list" style="margin-top: 20px;"></ul>
+      </div>
+    </section>
+    
+    <footer style="margin-top: 40px; text-align: center; font-family: var(--font-mono); font-size: 12px;">
+      <a href="index.html" style="color: var(--gold); text-decoration: none;">[ Return to Citizen Portal ]</a>
+    </footer>
+
+  </div>
+
+  <script src="supabase.js"></script>
+  <script src="gov.js"></script>
+</body>
+</html>

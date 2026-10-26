@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CivicCapture</title>
+
+  <!-- Fonts: Source Serif 4 (headings), Inter (body/buttons), IBM Plex Mono (File IDs) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,500;8..60,600&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@500&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <div class="ledger">
+
+    <header class="ledger-head">
+      <p class="case-marker">Field Report System</p>
+      <h1>CivicCapture</h1>
+      <p class="ledger-rule">Every entry below is captured live and time-stamped. Nothing is uploaded from storage.</p>
+    </header>
+
+    <!-- ENTRY 1: Identify the citizen -->
+    <section id="citizen-section" class="entry">
+      <div class="entry-head">
+        <span class="entry-num">01</span>
+        <h2>Reporting citizen</h2>
+      </div>
+      <div class="entry-body">
+        <label for="citizen-name">Full name</label>
+        <input type="text" id="citizen-name" placeholder="Enter your name" />
+        <button id="start-btn">Begin report</button>
+        <p id="citizen-status" class="status-line"></p>
+      </div>
+    </section>
+
+    <!-- ENTRY 2: Camera capture -->
+    <section id="capture-section" class="entry hidden">
+      <div class="entry-head">
+        <span class="entry-num">02</span>
+        <h2>Capture evidence</h2>
+      </div>
+      <div class="entry-body">
+      
+        <!-- Type Selection -->
+        <div id="type-selection">
+          <label>Select evidence type</label>
+          <div class="button-row">
+            <button id="select-photo-btn">Photo</button>
+            <button id="select-video-btn">Video</button>
+            <button id="select-audio-btn">Audio</button>
+          </div>
+        </div>
+
+        <div id="capture-ui" class="hidden">
+          <div class="camera-frame">
+            <video id="camera-preview" autoplay playsinline></video>
+            <canvas id="capture-canvas" class="hidden"></canvas>
+            <div id="audio-visualizer" style="display: none; height: 120px; background: #000; align-items: center; justify-content: center; color: var(--gold); font-family: var(--font-mono); font-size: 14px;">[ AUDIO CAPTURE ACTIVE ]</div>
+            <span id="live-dot" class="live-dot hidden">&#9679; LIVE <span id="recording-timer" class="hidden" style="margin-left: 6px; color: #fff;">00:00</span></span>
+          </div>
+
+          <div class="button-row">
+            <button id="switch-camera-btn" class="hidden">Switch</button>
+            <button id="take-photo-btn" class="hidden primary">Capture photo</button>
+            <button id="record-video-btn" class="hidden primary">Record video</button>
+            <button id="stop-record-btn" class="hidden danger">Stop video</button>
+            <button id="record-audio-btn" class="hidden primary">Record audio</button>
+            <button id="stop-audio-btn" class="hidden danger">Stop audio</button>
+            <button id="cancel-capture-btn">Cancel</button>
+          </div>
+        </div>
+
+        <p id="upload-status" class="status-line"></p>
+
+        <div id="file-id-box" class="seal hidden">
+          <p class="seal-label">Filed &amp; sealed &mdash; reference this ID</p>
+          <code id="file-id-value"></code>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ENTRY 3: History -->
+    <section id="history-section" class="entry hidden">
+      <div class="entry-head">
+        <span class="entry-num">03</span>
+        <h2>Your filed reports</h2>
+      </div>
+      <div class="entry-body">
+        <ul id="file-list" class="ledger-list"></ul>
+      </div>
+    </section>
+
+  </div>
+
+  <footer style="margin-top: 40px; text-align: center; font-family: var(--font-mono); font-size: 12px;">
+    <a href="gov.html" style="color: var(--gold); text-decoration: none;">[ Government Officials Portal ]</a>
+  </footer>
+
+  <script src="supabase.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

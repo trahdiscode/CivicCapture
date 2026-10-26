@@ -1,0 +1,245 @@
+/* ============================================================
+   DESIGN TOKENS
+   ============================================================ */
+:root {
+  --paper: #edeff2;       /* page background */
+  --paper-raised: #ffffff; /* card surfaces */
+  --ink: #1b2430;         /* primary text, buttons */
+  --ink-soft: #5b6472;    /* secondary text */
+  --gold: #c08a2e;        /* the one accent — used sparingly */
+  --gold-soft: #f3e6cc;   /* gold tint, for backgrounds */
+  --alert: #c4483a;       /* live-recording indicator only */
+  --line: #d6d9de;        /* hairline rules/borders */
+
+  --font-head: "Source Serif 4", Georgia, serif;
+  --font-body: "Inter", system-ui, sans-serif;
+  --font-mono: "IBM Plex Mono", monospace;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 32px 16px;
+  background: var(--paper);
+  font-family: var(--font-body);
+  color: var(--ink);
+}
+
+/* ============================================================
+   LAYOUT SHELL
+   ============================================================ */
+.ledger {
+  max-width: 460px;
+  margin: 0 auto;
+}
+
+.hidden {
+  display: none;
+}
+
+/* ============================================================
+   HEADER
+   ============================================================ */
+.ledger-head {
+  margin-bottom: 28px;
+}
+
+.case-marker {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: 0.04em;
+  color: var(--gold);
+  margin: 0 0 6px 0;
+}
+
+.ledger-head h1 {
+  font-family: var(--font-head);
+  font-weight: 600;
+  font-size: 34px;
+  margin: 0;
+  line-height: 1.1;
+}
+
+.ledger-rule {
+  margin: 10px 0 0 0;
+  padding-top: 14px;
+  border-top: 1px solid var(--line);
+  color: var(--ink-soft);
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+/* ============================================================
+   ENTRY (each numbered section — the "case file" unit)
+   ============================================================ */
+.entry {
+  background: var(--paper-raised);
+  border: 1px solid var(--line);
+  margin-bottom: 16px;
+}
+
+.entry-head {
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+  padding: 16px 20px;
+  border-bottom: 1px solid var(--line);
+}
+
+.entry-num {
+  font-family: var(--font-mono);
+  font-size: 13px;
+  color: var(--gold);
+}
+
+.entry-head h2 {
+  font-family: var(--font-head);
+  font-weight: 600;
+  font-size: 18px;
+  margin: 0;
+}
+
+.entry-body {
+  padding: 18px 20px 22px 20px;
+}
+
+/* ============================================================
+   FORM ELEMENTS
+   ============================================================ */
+label {
+  display: block;
+  font-size: 13px;
+  color: var(--ink-soft);
+  margin-bottom: 6px;
+}
+
+input[type="text"] {
+  width: 100%;
+  padding: 11px 12px;
+  font-size: 15px;
+  font-family: var(--font-body);
+  border: 1px solid var(--line);
+  background: var(--paper);
+  color: var(--ink);
+  margin-bottom: 12px;
+}
+
+input[type="text"]:focus {
+  outline: 2px solid var(--gold);
+  outline-offset: 1px;
+}
+
+button {
+  padding: 11px 18px;
+  font-size: 14px;
+  font-family: var(--font-body);
+  font-weight: 500;
+  border: 1px solid var(--ink);
+  background: transparent;
+  color: var(--ink);
+  cursor: pointer;
+}
+
+button:hover {
+  background: var(--ink);
+  color: var(--paper-raised);
+}
+
+button.primary {
+  background: var(--ink);
+  color: var(--paper-raised);
+}
+
+button.primary:hover {
+  background: var(--gold);
+  border-color: var(--gold);
+}
+
+button:focus-visible {
+  outline: 2px solid var(--gold);
+  outline-offset: 2px;
+}
+
+.button-row {
+  display: flex;
+  gap: 10px;
+}
+
+.status-line {
+  font-size: 13px;
+  color: var(--ink-soft);
+  min-height: 18px;
+  margin: 10px 0 0 0;
+}
+
+/* ============================================================
+   CAMERA
+   ============================================================ */
+.camera-frame {
+  position: relative;
+  margin-bottom: 14px;
+}
+
+#camera-preview {
+  width: 100%;
+  display: block;
+  background: #000;
+}
+
+.live-dot {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  background: rgba(0, 0, 0, 0.6);
+  color: var(--alert);
+  font-family: var(--font-mono);
+  font-size: 12px;
+  padding: 3px 8px;
+}
+
+/* ============================================================
+   FILE ID SEAL — the moment of confirmation
+   ============================================================ */
+.seal {
+  margin-top: 16px;
+  padding: 14px 16px;
+  background: var(--gold-soft);
+  border: 1px solid var(--gold);
+}
+
+.seal-label {
+  margin: 0 0 8px 0;
+  font-size: 13px;
+  color: var(--ink);
+}
+
+.seal code {
+  font-family: var(--font-mono);
+  font-size: 13px;
+  word-break: break-all;
+  color: var(--ink);
+}
+
+/* ============================================================
+   HISTORY LIST
+   ============================================================ */
+.ledger-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.ledger-list li {
+  font-family: var(--font-mono);
+  font-size: 13px;
+  padding: 9px 0;
+  border-bottom: 1px solid var(--line);
+  color: var(--ink-soft);
+}
+
+.ledger-list li:last-child {
+  border-bottom: none;
+}
